@@ -18,7 +18,7 @@ class MekanikController extends Controller
         $data = [
             'name'=>'',
             'alamat'=>'',
-            'status_aktivasi'=>'',
+            'status_aktivasi'=>'1',
             'member_id'=>'',
             'tombol'=>'Simpan',
             'action'=> url('/mekanik/add')

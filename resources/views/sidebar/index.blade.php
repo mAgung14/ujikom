@@ -33,89 +33,14 @@
                 <span>AMRS</span></a>
             </div>
             <li class="label">Menu</li>
-  <li><a href="{{ url('/home') }}"><i class="ti-home"></i> Dashboard </a></li>
-  <li><a href="{{ url('/mekanik') }}"><i class="ti-user"></i> mekanik</a></li>
-  <li><a href="{{ url('/member') }}"><i class="ti-user"></i> Member</a></li>
-  <li><a href="app-widget-card.html"><i class="ti-layout-grid2-alt"></i> Widget</a></li>
-  <li class="label">Features</li>
-  <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span
-              class="sidebar-collapse-icon ti-angle-down"></span></a>
-      <ul>
-          <li><a href="ui-typography.html">Typography</a></li>
-          <li><a href="ui-alerts.html">Alerts</a></li>
-
-          <li><a href="ui-button.html">Button</a></li>
-          <li><a href="ui-dropdown.html">Dropdown</a></li>
-
-          <li><a href="ui-list-group.html">List Group</a></li>
-
-          <li><a href="ui-progressbar.html">Progressbar</a></li>
-          <li><a href="ui-tab.html">Tab</a></li>
-
-      </ul>
-  </li>
-  <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span
-              class="sidebar-collapse-icon ti-angle-down"></span></a>
-      <ul>
-          <li><a href="uc-calendar.html">Calendar</a></li>
-          <li><a href="uc-carousel.html">Carousel</a></li>
-          <li><a href="uc-weather.html">Weather</a></li>
-          <li><a href="uc-datamap.html">Datamap</a></li>
-          <li><a href="uc-todo-list.html">To do</a></li>
-          <li><a href="uc-scrollable.html">Scrollable</a></li>
-          <li><a href="uc-sweetalert.html">Sweet Alert</a></li>
-          <li><a href="uc-toastr.html">Toastr</a></li>
-          <li><a href="uc-range-slider-basic.html">Basic Range Slider</a></li>
-          <li><a href="uc-range-slider-advance.html">Advance Range Slider</a></li>
-          <li><a href="uc-nestable.html">Nestable</a></li>
-
-          <li><a href="uc-rating-bar-rating.html">Bar Rating</a></li>
-          <li><a href="uc-rating-jRate.html">jRate</a></li>
-      </ul>
-  </li>
-  <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid4-alt"></i> Table <span
-              class="sidebar-collapse-icon ti-angle-down"></span></a>
-      <ul>
-          <li><a href="table-basic.html">Basic</a></li>
-
-          <li><a href="table-export.html">Datatable Export</a></li>
-          <li><a href="table-row-select.html">Datatable Row Select</a></li>
-          <li><a href="table-jsgrid.html">Editable </a></li>
-      </ul>
-  </li>
-  <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> Icons <span
-              class="sidebar-collapse-icon ti-angle-down"></span></a>
-      <ul>
-          <li><a href="font-themify.html">Themify</a></li>
-      </ul>
-  </li>
-  <li><a class="sidebar-sub-toggle"><i class="ti-map"></i> Maps <span
-              class="sidebar-collapse-icon ti-angle-down"></span></a>
-      <ul>
-          <li><a href="gmaps.html">Basic</a></li>
-          <li><a href="vector-map.html">Vector Map</a></li>
-      </ul>
-  </li>
-  <li class="label">Form</li>
-  <li><a href="form-basic.html"><i class="ti-view-list-alt"></i> Basic Form </a></li>
-  <li class="label">Extra</li>
-  <li><a class="sidebar-sub-toggle"><i class="ti-files"></i> Invoice <span
-              class="sidebar-collapse-icon ti-angle-down"></span></a>
-      <ul>
-          <li><a href="invoice.html">Basic</a></li>
-          <li><a href="invoice-editable.html">Editable</a></li>
-      </ul>
-  </li>
-  <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Pages <span
-              class="sidebar-collapse-icon ti-angle-down"></span></a>
-      <ul>
-          <li><a href="page-login.html">Login</a></li>
-          <li><a href="page-register.html">Register</a></li>
-          <li><a href="page-reset-password.html">Forgot password</a></li>
-      </ul>
-  </li>
-  <li><a href="../documentation/index.html"><i class="ti-file"></i> Documentation</a></li>
-  <li><a><i class="ti-close"></i> Logout</a></li>
+            {{-- {{ auth()->user()->level }} --}}
+            @if (auth()->user()->level == 'admin')
+                <li><a href="{{ url('/home') }}"><i class="ti-home"></i> Dashboard </a></li>
+                <li><a href="{{ url('/mekanik') }}"><i class="ti-user"></i> mekanik</a></li>
+                <li><a href="{{ url('/member') }}"><i class="ti-user"></i> Member</a></li>
+            @endif
+  <li><a href="{{ url('/kerusakan') }}"><i class="ti-layout-grid2-alt"></i> kerusakan</a></li>
+  <li><a href="{{ url('/logout') }}" ><i class="ti-close"></i> Logout</a></li>
 </ul>
           </ul>
         </div>
@@ -164,7 +89,7 @@
             <div class="col-lg-4 p-l-0 title-margin-left">
               <div class="page-header">
                 <div class="page-title">
-                    
+
                 </div>
               </div>
             </div>
@@ -210,7 +135,7 @@
                       <div class="stat-digit">770</div>
                     </div>
                   </div>
-                </div> 
+                </div>
               </div>--}}
               {{-- <div class="col-lg-3">
                 <div class="card">
@@ -225,7 +150,7 @@
                   </div>
                 </div> --}}
               </div>
-            </div> 
+            </div>
             {{-- content --}}
             <section class="content">
               @yield('content')

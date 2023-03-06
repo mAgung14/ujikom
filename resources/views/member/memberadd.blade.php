@@ -24,17 +24,17 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-title">
                     <h3>Input Member</h3>
-                    
+
                 </div>
                 <div class="card-body">
                     <div class="basic-elements">
-                        <form action="{{ $action }}" method="post">
+                        <form action="{{ $action }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-5">
@@ -53,22 +53,22 @@
                                     <div class="form-group">
                                         <label>NIK</label>
                                         <input id="example-email" class="form-control" type="text" name="nik" value="{{ $nik }}">
-                                    </div>   
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
 
                                     <div class="form-group">
                                         <label>Foto</label>
                                         <input class="form-control" type="file" name="foto" value="{{ $foto }}">
-                                    </div>    
+                                    </div>
                                     <div class="form-group">
                                         <label>ktp</label>
                                         <input class="form-control" type="file" name="ktp" value="{{ $ktp }}">
-                                    </div>    
+                                    </div>
                                     <div class="form-group">
                                         <label>Alamat</label>
                                         <input class="form-control" type="text" name="alamat" value="{{ $alamat }}">
-                                    </div>    
+                                    </div>
                                     <div class="form-group">
                                         <label>userid</label>
                                         <select name="users_id" id="users_id" class="custom-select">
@@ -77,9 +77,9 @@
                                                 <option value="{{ $item->id }}">{{ $item->names }}</option>
                                             @endforeach
                                         </select>
-                                    </div> 
-                                    <button class="btn btn-primary float-end">Simpan</button>   
-                                    <button class="btn btn-danger float-end"><a href="{{ url('/member') }}">Batal</a></button>   
+                                    </div>
+                                    <button class="btn btn-primary float-end">Simpan</button>
+                                    <button class="btn btn-danger float-end"><a href="{{ url('/member') }}">Batal</a></button>
                                 </div>
                             </div>
                                 </div>
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-          
+
     <!-- jquery vendor -->
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/jquery.nanoscroller.min.js"></script>
@@ -98,7 +98,7 @@
     <script src="js/lib/menubar/sidebar.js"></script>
     <script src="js/lib/preloader/pace.min.js"></script>
     <!-- sidebar -->
-    
+
     <!-- bootstrap -->
 
 

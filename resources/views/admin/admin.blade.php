@@ -10,11 +10,11 @@
             </div>
             <div class="stat-content dib">
               <div class="stat-text">Member</div>
-              <div class="stat-digit"></div>
+              <div class="stat-digit">{{  App\Models\Member::count() ?? 0 }}</div>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
        <div class="col-lg-3">
         <div class="card">
           <div class="stat-widget-one">
@@ -23,11 +23,11 @@
             </div>
             <div class="stat-content dib">
               <div class="stat-text">New Mekanik</div>
-              <div class="stat-digit"></div>
+              <div class="stat-digit">{{  App\Models\Mekanik::count() ?? 0 }}</div>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
        <div class="col-lg-3">
         <div class="card">
           <div class="stat-widget-one">
@@ -35,11 +35,11 @@
               <i class="ti-layout-grid2 color-pink border-pink"></i>
             </div>
             <div class="stat-content dib">
-              <div class="stat-text">Active Projects</div>
-              <div class="stat-digit">770</div>
+              <div class="stat-text">Kerusakan</div>
+              <div class="stat-digit"></div>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
        <div class="col-lg-3">
         <div class="card">
@@ -54,5 +54,5 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
 @endsection

@@ -31,9 +31,15 @@ class MemberController extends Controller
 
     function add(Request $req){
         if ($req->hasfile('foto')) {
-            $foto = $req->file('foto')->store('foto');
+            $foto = $req->file('foto')->store('img');
        }else{
            $foto = "";
+       }
+
+        if ($req->hasfile('ktp')) {
+            $ktp = $req->file('ktp')->store('img');
+       }else{
+           $ktp = "";
        }
 
         $data = [
@@ -42,9 +48,9 @@ class MemberController extends Controller
             'email'=>$req->email,
             'nik'=>$req->nik,
             'foto'=>$foto,
-            'ktp'=>$req->ktp,
+            'ktp'=>$ktp,
             'alamat'=>$req->alamat,
-            'users_id'=>$req->users_id,
+            'users_id'=>'1',
         ];
         Member::create($data);
         return redirect('/member');
@@ -62,7 +68,7 @@ class MemberController extends Controller
             'ktp'=>$edit->ktp,
             'alamat'=>$edit->alamat,
             'users_id'=>$edit->users_id,
-            'action'=> url('/member/update').'/'.$edit->id_member
+            'action'=> url('/member/update').'/'.$edit->id
         ];
 
 
@@ -78,12 +84,25 @@ class MemberController extends Controller
             'alamat'=>$req->alamat,
             'users_id'=>$req->users_id,
         ];
-            
-            if ($req->hasfile('image')) {
-                $data['image'] = $req->file('image')->store('img');
+
+            if ($req->hasfile('foto')) {
+                $data['foto'] = $req->file('foto')->store('foto');
             }
 
-        Member::where('id_member',$req->id_member)->update($data);
+        Member::where('id',$req->id)->update($data);
         return redirect('/member');
+    }
+
+    function delete(Request $req){
+        $delete = Member::where('id', $req->id)->delete();
+        if ($delete) {
+            return redirect('/member')->with('pesan','<div class="alert alert-secondary" role="alert">
+            member Berhasil Di hapus
+          </div>');
+        }else{
+            return redirect('/member')->with('pesan','<div class="alert alert-secondary" role="alert">
+            Member Tidak bisa di hapus
+          </div>');
+        }
     }
 }
