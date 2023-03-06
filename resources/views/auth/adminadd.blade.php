@@ -1,21 +1,3 @@
-{{-- <div class="w3-container w3-teal">
-  <h2>Input Form</h2>
-</div>
-
-<form class="w3-container-indigo" action="{{ $action }}" method="POST" enctype="multipart/form-data">
-    @csrf
-  <label class="w3-text-teal"><b>UserName</b></label>
-  <input class="w3-input w3-border w3-light-grey" type="text" name="username">
-
-  <label class="w3-text-teal"><b>Password</b></label>
-  <input class="w3-input w3-border w3-light-grey" type="password" name="password">
-
-  <label class="w3-text-teal"><b>Level</b></label>
-  <input class="w3-input w3-border w3-light-grey" type="text" name="level">
-
-
-  <button class="w3-btn w3-blue-grey" name="simpan">{{ $tombol }}</button>
-</form> --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +17,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: rgb(21, 21, 197);">
 
     <div class="unix-login">
         <div class="container-fluid rounded-3">
@@ -43,7 +25,7 @@
                 <div class="col-lg-6">
                     <div class="login-content">
                         <div class="login-logo">
-                            
+
                         </div>
                         <div class="login-form">
                             <h4>Regterasi</h4>
@@ -58,8 +40,9 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="email" placeholder="email">
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">{{ $tombol }}</button>
+                                <button type="submit" class="btn btn-primary btn-flat m-b-20 m-t-10">{{ $tombol }}</button>
                             </form>
+                            <a href="{{ url('/login') }}" class="btn btn-danger btn-flat m-b-20 ">Kembali</a>
                         </div>
                     </div>
                 </div>

@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kerusakan;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class KerusakanController extends Controller
 {
-    function ambil(){
-        return view('kerusakan.kerusakan');
+    public function candak(){
+        $kerusakan['kerusakan'] = kerusakan::get();
+        return view('kerusakan.kerusakan', $kerusakan);
     }
 
-    function tambah(){
+    public function oi(){
+        $member['member'] = Member::get();
         $data = [
             'jnskendaraan' => '',
             'tipe_kendaraan' => '',
@@ -19,6 +23,25 @@ class KerusakanController extends Controller
             'id_member' => '',
             'action' => url('/kerusakan/add')
         ];
-        return view('kerusakan.kerusakanadd');
+        return view('kerusakan.kerusakanadd',$data,$member);
+    }
+
+    public function add(Request $req){
+        // dd($req);
+        if ($req->hasfile('foto_kendaraan')) {
+            $foto = $req->file('foto_kendaraan')->store('img');
+        }else {
+            $foto = "";
+        }
+
+        $data = [
+            'jnskendaraan' => $req->jnskendaraan,
+            'tipe_kendaraan' => $req->tipe_kendaraan,
+            'tahunkendaraan' => $req->tahunkendaraan,
+            'foto_kendaraan' => $foto,
+            'id_member' => $req->id_member,
+        ];
+        kerusakan::create($data);
+        return redirect('/kerusakan');
     }
 }

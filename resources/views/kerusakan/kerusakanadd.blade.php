@@ -12,15 +12,16 @@
     <!-- Standard iPad Touch Icon-->
     <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
     <!-- Standard iPhone Touch Icon-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
 
     <!-- Styles -->
-    <link href="../css/lib/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/lib/themify-icons.css" rel="stylesheet">
-    <link href="../css/lib/menubar/sidebar.css" rel="stylesheet">
-    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/lib/helper.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../../css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/lib/themify-icons.css" rel="stylesheet">
+    <link href="../../css/lib/menubar/sidebar.css" rel="stylesheet">
+    <link href="../../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/lib/helper.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -39,20 +40,29 @@
                             <div class="row">
                                 <div class="col-lg-5">
                                     <div class="form-group">
-                                        <label>Jenis Kendaraan</label>
-                                        <input type="text" class="form-control" name="jnskendaraan" value="{{ $jnskendaraan }}">
+                                        <label>Jenis kendaraan</label>
+                                        <select class="form-select" name="jnskendaraan" aria-label="Default select example">
+                                            <option selected>---Pilih---</option>
+                                            <option value="motor">Motor</option>
+                                            <option value="mobil">Mobil</option>
+                                          </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Tipe Kendaraan</label>
+                                        <input type="text" class="form-control" name="tipe_kendaraan" value="{{ $jnskendaraan }}">
                                     </div>
                                     <div class="form-group">
-                                        <label>Status Aktivasi</label>
-                                        <select class="form-select" name="status_aktivasi" aria-label="Default select example">
-                                            <option selected>---Pilih---</option>
-                                            <option value="0">Aktif</option>
-                                            <option value="1">Non Aktif</option>
-                                          </select>
+                                        <label>Tahun Kendaraan</label>
+                                        <input type="text" class="form-control" name="tahunkendaraan" value="{{ $tahunkendaraan }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Foto Kendaraan</label>
+                                        <input type="file" name="foto_kendaraan" id="" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Member</label>
-                                        <select class="form-select" name="member_id" aria-label="Default select example">
+                                        <select class="form-select" name="id_member" aria-label="Default select example">
                                             @foreach ($member as $item)
                                             <option selected>---Pilih---</option>
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>

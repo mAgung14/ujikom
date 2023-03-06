@@ -42,8 +42,8 @@
                                     <td><span class="badge badge-primary">{{ $item->no_hp }}</span></td>
                                     <td>{{ $item->email }}</td>
                                     <td class="color-primary">{{ $item->nik }}</td>
-                                    <td><img src="/storage/{{ $item->foto }}" alt="" ></td>
-                                    <td><img src="/storage/{{ $item->ktp }} " alt=""></td>
+                                    <td><img src="/storage/{{ $item->foto }}" alt="" width="50" height="50"></td>
+                                    <td><img src="/storage/{{ $item->ktp }} " alt="" width="50" height="50"></td>
                                     <td>{{ $item->alamat }}</td>
                                     <td>{{ $item->user_id }}</td>
                                     <td><a href="{{ url('/member/update').'/'.$item->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a></td>

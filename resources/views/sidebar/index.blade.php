@@ -33,12 +33,12 @@
                 <span>AMRS</span></a>
             </div>
             <li class="label">Menu</li>
-            {{-- {{ auth()->user()->level }} --}}
-            @if (auth()->user()->level == 'admin')
+
+            {{-- @if (auth()->user()->level == 'admin') --}}
                 <li><a href="{{ url('/home') }}"><i class="ti-home"></i> Dashboard </a></li>
                 <li><a href="{{ url('/mekanik') }}"><i class="ti-user"></i> mekanik</a></li>
                 <li><a href="{{ url('/member') }}"><i class="ti-user"></i> Member</a></li>
-            @endif
+            {{-- @endif --}}
   <li><a href="{{ url('/kerusakan') }}"><i class="ti-layout-grid2-alt"></i> kerusakan</a></li>
   <li><a href="{{ url('/logout') }}" ><i class="ti-close"></i> Logout</a></li>
 </ul>
@@ -157,13 +157,7 @@
             </section>
 
             <!-- footer -->
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="footer">
-                  <p>2018 © Admin Board. - <a href="#">example.com</a></p>
-                </div>
-              </div>
-            </div>
+
           </section>
         </div>
       </div>

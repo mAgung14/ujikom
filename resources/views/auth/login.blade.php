@@ -17,7 +17,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: rgb(24, 24, 171);">
 
     <div class="unix-login">
         <div class="container-fluid rounded-3">
@@ -25,7 +25,7 @@
                 <div class="col-lg-6">
                     <div class="login-content">
                         <div class="login-logo">
-                            
+
                         </div>
                         <div class="login-form">
                             <h4>Administratior Login</h4>
@@ -38,9 +38,6 @@
                                     <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                                 <div class="checkbox">
-                                    <label>
-										<input type="checkbox"> Remember Me
-									</label>
                                     <label class="pull-right">
 										<a href="#">Forgotten Password?</a>
 									</label>

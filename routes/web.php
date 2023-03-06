@@ -6,7 +6,6 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\KerusakanController;
 use App\Http\Controllers\MekanikController;
 use App\Http\Controllers\MemberController;
-use App\Models\kerusakan;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [homeController::class, 'index']);
-
+Route::middleware(['auth'])->group(function () {
     Route::get('/home', [homeController::class, 'home']);
+});
 
 
 // login
@@ -45,14 +45,17 @@ Route::get('/member/delete/{id}', [MemberController::class, 'delete']);
 
 
 // mekanik
-Route::get('/mekanik', [MekanikController::class, 'ambil']);
+Route::get('/mekanik', [MekanikController::class, 'ambil'])->middleware('isadmin');
 Route::get('/mekanik/add', [MekanikController::class, 'tambah']);
 Route::post('/mekanik/add', [MekanikController::class, 'add']);
-Route::get('/mekanik/update/{id}', [MekanikController::class, 'edit']);
-Route::post('/mekanik/update/{id}', [MekanikController::class, 'update']);
-Route::get('/mekanik/delete/{id}', [MekanikController::class, 'delete']);
+Route::get('/mekanik/update/{id}', [MekanikController::class, 'edit'])->middleware('isadmin');
+Route::post('/mekanik/update/{id}', [MekanikController::class, 'update'])->middleware('isadmin');
+Route::get('/mekanik/delete/{id}', [MekanikController::class, 'delete'])->middleware('isadmin');
 
 //kerusakan
-Route::get('/kerusakan', [KerusakanController::class, 'ambil']);
-Route::get('/kerusakan/add', [KerusakanController::class], 'tambah');
-Route::post('kerusakan/add', [KerusakanController::class], 'add');
+Route::get('/kerusakan', [KerusakanController::class, 'candak']);
+Route::get('/kerusakan/add', [KerusakanController::class, 'oi']);
+Route::post('kerusakan/add', [KerusakanController::class, 'add']);
+Route::get('/kerusakan/update/{id}', [kerusakanController::class, 'edit'])->middleware('isadmin');
+Route::post('/kerusakan/update/{id}', [kerusakanController::class, 'update'])->middleware('isadmin');
+Route::get('/kerusakan/delete/{id}', [kerusakanController::class, 'delete'])->middleware('isadmin');
