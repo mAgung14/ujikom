@@ -3,11 +3,13 @@
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\JenisKerusakanController;
 use App\Http\Controllers\KerusakanController;
 use App\Http\Controllers\MekanikController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +23,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [homeController::class, 'index']);
-Route::middleware(['auth'])->group(function () {
+Route::group(['middleware' => 'auth'],function(){
     Route::get('/home', [homeController::class, 'home']);
 });
 
 
+
 // login
-Route::get('/login', [LoginController::class, 'login']);
+Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login/auth', [LoginController::class, 'logins']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
@@ -59,3 +62,10 @@ Route::post('kerusakan/add', [KerusakanController::class, 'add']);
 Route::get('/kerusakan/update/{id}', [kerusakanController::class, 'edit'])->middleware('isadmin');
 Route::post('/kerusakan/update/{id}', [kerusakanController::class, 'update'])->middleware('isadmin');
 Route::get('/kerusakan/delete/{id}', [kerusakanController::class, 'delete'])->middleware('isadmin');
+
+// jenis kerusakan
+Route::controller(JenisKerusakanController::class)->group(function(){
+    Route::get('/jeniskerusakan', 'index');
+    Route::get('/jeniskerusakan/add', 'tambah');
+    Route::post('/jeniskerusakan/add', 'add');
+ });

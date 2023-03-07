@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class KerusakanController extends Controller
 {
     public function candak(){
-        $kerusakan['kerusakan'] = kerusakan::get();
+        $kerusakan['kerusakan'] = kerusakan::with('Member')->get();
         return view('kerusakan.kerusakan', $kerusakan);
     }
 

@@ -12,7 +12,7 @@ class kerusakan extends Model
     protected $primaryKey = "id";
     protected $guarded = [];
 
-    public function kerusakan(){
-        return $this->hasMany(Member::class, 'id_member');
+    public function member(){
+        return $this->belongsTo(Member::class, 'id_member');
     }
 }

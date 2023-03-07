@@ -21,6 +21,24 @@
     <link href="css/lib/bootstrap.min.css" rel="stylesheet" />
     <link href="css/lib/helper.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+
+    <!-- Styles -->
+    <link href="../../css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/lib/themify-icons.css" rel="stylesheet">
+    <link href="../../css/lib/menubar/sidebar.css" rel="stylesheet">
+    <link href="../../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/lib/helper.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
   </head>
 
   <body>
@@ -32,15 +50,23 @@
               <a href="index.html">
                 <span>AMRS</span></a>
             </div>
-            <li class="label">Menu</li>
+            <li class="label">{{ auth()->user()->level }}</li>
 
-            {{-- @if (auth()->user()->level == 'admin') --}}
+            @if (auth()->user()->level == 'admin')
                 <li><a href="{{ url('/home') }}"><i class="ti-home"></i> Dashboard </a></li>
                 <li><a href="{{ url('/mekanik') }}"><i class="ti-user"></i> mekanik</a></li>
                 <li><a href="{{ url('/member') }}"><i class="ti-user"></i> Member</a></li>
-            {{-- @endif --}}
-  <li><a href="{{ url('/kerusakan') }}"><i class="ti-layout-grid2-alt"></i> kerusakan</a></li>
-  <li><a href="{{ url('/logout') }}" ><i class="ti-close"></i> Logout</a></li>
+                <li><a href="{{ url('/kerusakan') }}"><i class="ti-layout-grid2-alt"></i> kerusakan</a></li>
+                <li><a href="{{ url('/jeniskerusakan') }}"><i class="ti-layout-grid2-alt"></i>Jenis kerusakan</a></li>
+                 <li><a href="{{ url('/logout') }}" ><i class="ti-close"></i> Logout</a></li>
+
+            @elseif (auth()->user()->level == 'member')
+            <li><a href="{{ url('/mekanik') }}"><i class="ti-user"></i> mekanik</a></li>
+            <li><a href="{{ url('/member') }}"><i class="ti-user"></i> Member</a></li>
+            <li><a href="{{ url('/kerusakan') }}"><i class="ti-layout-grid2-alt"></i> kerusakan</a></li>
+            <li><a href="{{ url('/jeniskerusakan') }}"><i class="ti-layout-grid2-alt"></i>Jenis kerusakan</a></li>
+            <li><a href="{{ url('/logout') }}" ><i class="ti-close"></i> Logout</a></li>
+            @endif
 </ul>
           </ul>
         </div>
@@ -59,16 +85,15 @@
                 <span class="line"></span>
               </div>
             </div>
-            <div class="float-right">
-              <div class="dropdown dib">
-                <div class="header-icon">
-                  <a href="{{ url('/logout') }}">
-                    <i class="ti-power-off"></i>
-                    <span>Logout</span>
-                  </a>
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                  <form class="d-flex" role="search">
+                    @csrf
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
                 </div>
-              </div>
-            </div>
+              </nav>
           </div>
         </div>
       </div>
@@ -81,7 +106,7 @@
             <div class="col-lg-8 p-r-0 title-margin-right">
               <div class="page-header">
                 <div class="page-title">
-                    <h1>Welcome</h1>
+
                 </div>
               </div>
             </div>
@@ -190,6 +215,21 @@
     <script src="js/lib/owl-carousel/owl.carousel-init.js"></script>
     <!-- scripit init-->
     <script src="js/dashboard2.js"></script>
+     <!-- jquery vendor -->
+     <script src="js/lib/jquery.min.js"></script>
+     <script src="js/lib/jquery.nanoscroller.min.js"></script>
+     <!-- nano scroller -->
+     <script src="js/lib/menubar/sidebar.js"></script>
+     <script src="js/lib/preloader/pace.min.js"></script>
+     <!-- sidebar -->
+
+     <!-- bootstrap -->
+
+
+     <script src="js/lib/bootstrap.min.js"></script><script src="js/scripts.js"></script>
+     <!-- scripit init-->
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
