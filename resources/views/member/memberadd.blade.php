@@ -74,7 +74,7 @@
                                         <select name="users_id" id="users_id" class="custom-select">
                                             <option value="" selected disabled hidden>---Pilih---</option>
                                             @foreach ($users as $item)
-                                                <option value="{{ $item->id }}">{{ $item->names }}</option>
+                                                <option value="{{ $item->id }}">{{ $item->username }}</option>
                                             @endforeach
                                         </select>
                                     </div>

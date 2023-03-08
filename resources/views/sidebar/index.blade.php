@@ -85,15 +85,20 @@
                 <span class="line"></span>
               </div>
             </div>
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                  <form class="d-flex" role="search">
-                    @csrf
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-                </div>
-              </nav>
+                  {{-- <a href="{{ url('/mekanik/add') }}" class="btn btn-success ms-2 float-end">Tambah Data Mekanik</i></a> --}}
+                  <div class="btn-group float-end">
+                    <button type="button" class="btn btn-danger">{{ auth()->user()->username }}</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-gear m-x2"></i>DaftarMekanik</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                  </div>
           </div>
         </div>
       </div>
@@ -178,7 +183,7 @@
             </div>
             {{-- content --}}
             <section class="content">
-              @yield('content')
+             
             </section>
 
             <!-- footer -->

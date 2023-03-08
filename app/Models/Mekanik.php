@@ -17,7 +17,7 @@ class Mekanik extends Model
         'member_id'
     ];
 
-    public function mekanik(){
-        return $this->belongsTo(Member::class, 'id');
+    public function member(){
+        return $this->hasMany(Member::class, 'member_id');
     }
 }

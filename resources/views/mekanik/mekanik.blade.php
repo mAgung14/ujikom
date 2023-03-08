@@ -1,4 +1,4 @@
-@extends('sidebar.index')
+{{-- @extends('sidebar.index')
 @section('content')
 
 <div class="ms-2" style="color:aliceblue;">
@@ -10,7 +10,7 @@
             <div class="card m-2" style="width: 50rem">
                 <div class="card-title">
                     <h4>Table Basic </h4>
-                    
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -36,7 +36,7 @@
                                     <td><a href="{{ url('/mekanik/update').'/'.$item->id }}">Edit</a></td>
                                     @endforeach
                                 </tr>
-                               
+
                                 {{--
                                 <tr>
                                     <th scope="row">2</th>
@@ -53,11 +53,51 @@
                                     <td class="color-danger">$14.85</td>
                                 </tr>
                             </tbody> --}}
-                        </table>
+                        {{-- </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endsection --}}
+
+@extends('sidebar')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+@section('content')
+<div class="col-lg-12 grid-margin stretch-card mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Mekanik table</h4>
+        <p class="card-description"><a href="{{ url('/mekanik/add') }}" class="btn btn-primary">Tambah data</a></p>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Alamat</th>
+                <th>Status Aktivasi</th>
+                <th>Member</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($mekanik as $item)
+                              <tr>
+                                <th scope="row">{{ $item->id }}</th>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->alamat }}<span class="badge badge-primary"></span></td>
+                                <td>{{ $item->status_aktivasi }}</td>
+                                <td>{{ $item->member_id }}</td>
+                                <td><a href="{{ url('/mekanik/update').'/'.$item->id }}">Edit</a></td>
+                            </tr>
+                            @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
+

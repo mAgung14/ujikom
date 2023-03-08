@@ -18,7 +18,7 @@ class MekanikController extends Controller
         $data = [
             'name'=>'',
             'alamat'=>'',
-            'status_aktivasi'=>'1',
+            'status_aktivasi'=>'',
             'member_id'=>'',
             'tombol'=>'Simpan',
             'action'=> url('/mekanik/add')
@@ -30,8 +30,8 @@ class MekanikController extends Controller
         $data = [
             'name'=>$req->name,
             'alamat'=>$req->alamat,
-            'status_aktivasi'=>$req->status_aktivasi,
-            'member_id'=>'1',
+            'status_aktivasi'=>'0',
+            'member_id'=>$req->member_id,
         ];
         Mekanik::create($data);
         return redirect('/member');

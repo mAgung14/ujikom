@@ -21,12 +21,12 @@ class Member extends Model
         'users_id'
     ];
 
-   public function users(){
-         return $this->belongsTo(User::class, 'users_id');
+   public function user(){
+         return $this->belongsTo(User::class, 'id');
      }
 
-     public function member(){
-         return $this->hasMany(Mekanik::class, 'id');
+     public function mekanik(){
+         return $this->belongsTo(Mekanik::class, 'id');
      }
      public function kerusakan(){
          return $this->hasMany(kerusakan::class, 'id');

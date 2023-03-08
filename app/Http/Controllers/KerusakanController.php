@@ -44,4 +44,16 @@ class KerusakanController extends Controller
         kerusakan::create($data);
         return redirect('/kerusakan');
     }
+    function delete(Request $req){
+        $delete = kerusakan::where('id', $req->id)->delete();
+        if ($delete) {
+            return redirect('/kerusakan')->with('pesan','<div class="alert alert-secondary" role="alert">
+            kerusakan Berhasil Di hapus
+          </div>');
+        }else{
+            return redirect('/kerusakan')->with('pesan','<div class="alert alert-secondary" role="alert">
+            kerusakan Tidak bisa di hapus
+          </div>');
+        }
+    }
 }

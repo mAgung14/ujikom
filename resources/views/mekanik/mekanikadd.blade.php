@@ -47,21 +47,11 @@
                                         <label>Alamat</label>
                                         <input class="form-control" type="text" name="alamat" value="{{ $alamat }}">
                                     </div>
-                                    @if ($status_aktivasi!='1')
-                                    <div class="form-group">
-                                        <label>Status Aktivasi</label>
-                                        <select class="form-select" name="status_aktivasi" aria-label="Default select example">
-                                            <option selected>---Pilih---</option>
-                                            <option value="0">Aktif</option>
-                                            <option value="1">Non Aktif</option>
-                                          </select>
-                                    </div>
-                                    @endif
                                     <div class="form-group">
                                         <label>Member</label>
                                         <select class="form-select" name="member_id" aria-label="Default select example">
-                                            @foreach ($member as $item)
                                             <option selected>---Pilih---</option>
+                                            @foreach ($member as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                           </select>
