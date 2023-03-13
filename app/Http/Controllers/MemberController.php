@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MemberController extends Controller
 {
     function oi(){
-        $member['member'] = Member::get();
+        $member['member'] = Member::with('user')->get();
         return view('member.member',$member);
     }
 
@@ -50,7 +50,7 @@ class MemberController extends Controller
             'foto'=>$foto,
             'ktp'=>$ktp,
             'alamat'=>$req->alamat,
-            'users_id'=>'1',
+            'users_id'=>$req->users_id,
         ];
         Member::create($data);
         return redirect('/member');
@@ -86,7 +86,10 @@ class MemberController extends Controller
         ];
 
             if ($req->hasfile('foto')) {
-                $data['foto'] = $req->file('foto')->store('foto');
+                $data['foto'] = $req->file('foto')->store('img');
+            }
+            if ($req->hasfile('ktp')) {
+                $data['ktp'] = $req->file('ktp')->store('img');
             }
 
         Member::where('id',$req->id)->update($data);

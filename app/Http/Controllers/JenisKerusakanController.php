@@ -30,4 +30,25 @@ class JenisKerusakanController extends Controller
         jeniskerusakan::create($data);
         return redirect('/jeniskerusakan');
     }
+
+    function edit(Request $req,$id){
+        $edit = jeniskerusakan::find($id);
+        $data = [
+            'jenisKerusakan'=>$edit->jenisKerusakan,
+            'deskripsi'=>$edit->deskripsi,
+            'action'=> url('/jeniskerusakan/update').'/'.$edit->id
+        ];
+
+
+        return view('jeniskerusakan.jenisadd',$data);
+    }
+    function update(Request $req){
+        $data = [
+            'jeniskerusakan'=>$req->jeniskerusakan,
+            'deskripsi'=>$req->deskripsi,
+        ];
+
+        jeniskerusakan::where('id',$req->id)->update($data);
+        return redirect('/jeniskerusakan');
+    }
 }

@@ -64,8 +64,8 @@
                                         <label>Member</label>
                                         <select class="form-select" name="id_member" aria-label="Default select example">
                                             @foreach ($member as $item)
-                                            <option selected>---Pilih---</option>
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option >---Pilih---</option>
+                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
                                             @endforeach
                                           </select>
                                     </div>

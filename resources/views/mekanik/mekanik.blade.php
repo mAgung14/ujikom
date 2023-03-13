@@ -88,9 +88,17 @@
                                 <th scope="row">{{ $item->id }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->alamat }}<span class="badge badge-primary"></span></td>
-                                <td>{{ $item->status_aktivasi }}</td>
+                                <td>
+                                    @if ($item->status_aktivasi == 1)
+                                        <span class="btn btn-success">Aktive</span>
+                                    @else
+                                    <span class="btn btn-danger">Not Aktive</span>
+                                    @endif
+                                </td>
                                 <td>{{ $item->member_id }}</td>
-                                <td><a href="{{ url('/mekanik/update').'/'.$item->id }}">Edit</a></td>
+                                @foreach ($permintaan as $item)
+                                <td><a href="/mekanik/{{ $item['id'] }}" class="btn btn-primary">Aktivasi</a></td>
+                                @endforeach
                             </tr>
                             @endforeach
             </tbody>

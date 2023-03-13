@@ -11,7 +11,7 @@ class adminController extends Controller
     function tambah(){
         $data = [
             'username'=> '',
-            'password'=>'', 
+            'password'=>'',
             'email'=>'',
             'action' =>  url('/admin/add'),
             'tombol' => 'Sign Up'

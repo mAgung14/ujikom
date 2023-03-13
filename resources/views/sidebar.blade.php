@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AMRS | Admin</title>
+    <title>AMRS | {{ auth()->user()->level }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -26,8 +26,6 @@
     <div class="container-scroller">
       <div class="row p-0 m-0 proBanner" id="proBanner">
         <div class="col-md-12 p-0 m-0">
-          <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          </div>
         </div>
       </div>
       <!-- partial:partials/_sidebar.html -->
@@ -92,6 +90,14 @@
               <span class="menu-title">Jenis kerusakan</span>
             </a>
           </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ url('/Diagnosa') }}">
+              <span class="menu-icon">
+                <i class="mdi mdi-worker"></i>
+              </span>
+              <span class="menu-title">Diagnosa kerusakan</span>
+            </a>
+          </li>
           @elseif (auth()->user()->level == 'member')
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{ url('/home') }}">
@@ -117,7 +123,18 @@
               <span class="menu-title">Kerusakan</span>
             </a>
           </li>
+                    <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ url('/Diagnosa') }}">
+              <span class="menu-icon">
+                <i class="mdi mdi-worker"></i>
+              </span>
+              <span class="menu-title">Diagnosa kerusakan</span>
+            </a>
+          </li>
           @endif
+          {{-- @if (auth()->mekanik()->status_aktivasi == 1)
+
+          @endif --}}
         </ul>
       </nav>
       <!-- partial -->

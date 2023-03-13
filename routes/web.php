@@ -3,6 +3,7 @@
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\DiagnosaKerusakanController;
 use App\Http\Controllers\JenisKerusakanController;
 use App\Http\Controllers\KerusakanController;
 use App\Http\Controllers\MekanikController;
@@ -51,8 +52,8 @@ Route::get('/member/delete/{id}', [MemberController::class, 'delete']);
 Route::get('/mekanik', [MekanikController::class, 'ambil'])->middleware('isadmin');
 Route::get('/mekanik/add', [MekanikController::class, 'tambah']);
 Route::post('/mekanik/add', [MekanikController::class, 'add']);
-Route::get('/mekanik/update/{id}', [MekanikController::class, 'edit'])->middleware('isadmin');
-Route::post('/mekanik/update/{id}', [MekanikController::class, 'update'])->middleware('isadmin');
+Route::get('/mekanik/{id}', [MekanikController::class, 'edit'])->middleware('isadmin');
+// Route::post('/mekanik/update/{id}', [MekanikController::class, 'update'])->middleware('isadmin');
 Route::get('/mekanik/delete/{id}', [MekanikController::class, 'delete'])->middleware('isadmin');
 
 //kerusakan
@@ -68,4 +69,12 @@ Route::controller(JenisKerusakanController::class)->group(function(){
     Route::get('/jeniskerusakan', 'index');
     Route::get('/jeniskerusakan/add', 'tambah');
     Route::post('/jeniskerusakan/add', 'add');
+    Route::get('/jeniskerusakan/update/{id}', 'edit');
+    Route::post('/jeniskerusakan/update/{id}', 'update');
+ });
+
+ Route::controller(DiagnosaKerusakanController::class)->group(function(){
+    Route::get('/Diagnosa', 'index');
+    Route::get('/Diagnosa/add', 'tambah');
+    Route::post('/Diagnosa/add', 'add');
  });

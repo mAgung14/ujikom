@@ -7,7 +7,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Mekanik table</h4>
-        <p class="card-description"><a href="{{ url('/mekanik/add') }}" class="btn btn-primary">Tambah data</a></p>
+        <p class="card-description"><a href="{{ url('/kerusakan/add') }}" class="btn btn-primary">Tambah data</a></p>
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>

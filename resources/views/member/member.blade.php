@@ -33,7 +33,7 @@
                     <td class="py-1"><img src="/storage/{{ $item->foto }}" alt="" width="50" height="50"></td>
                     <td class="py-1"><img src="/storage/{{ $item->ktp }} " alt="" width="50" height="50"></td>
                     <td class="py-1">{{ $item->alamat }}</td>
-                    <td class="py-1">{{ $item->user->username }}</td>
+                    <td class="py-1">{{ $item->users_id }}</td>
                     <td class="py-1"><a href="{{ url('/member/update').'/'.$item->id }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a></td>
                     <td class="py-1"><a href="{{ url('/member/delete').'/'.$item->id }}" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a></td>
                 </tr>

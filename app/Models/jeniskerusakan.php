@@ -11,4 +11,8 @@ class jeniskerusakan extends Model
     protected $primaryKey = 'id';
     protected $table = 'jenis_kerusakan';
     protected $guarded = [];
+
+    public function diagnosa(){
+        $this->belongsTo(diagnosakerusakan::class, 'id');
+    }
 }

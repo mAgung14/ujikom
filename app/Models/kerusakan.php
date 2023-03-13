@@ -15,4 +15,8 @@ class kerusakan extends Model
     public function member(){
         return $this->belongsTo(Member::class, 'id_member');
     }
+
+    public function diagnosa(){
+        return $this->hasMany(diagnosakerusakan::class,'id_kerusakan', 'id');
+    }
 }
