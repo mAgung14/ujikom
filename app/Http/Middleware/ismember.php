@@ -18,10 +18,10 @@ class ismember
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->level == "member") {
+            if (Auth::user()->level == 'member') {
                 return $next($request);
             }
         }
-        return redirect('/');
+        return route('login');
     }
 }

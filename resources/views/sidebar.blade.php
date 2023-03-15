@@ -74,28 +74,13 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="{{ url('/kerusakan') }}">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Kerusakan</span>
-            </a>
-          </li>
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{ url('/jeniskerusakan') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
               </span>
               <span class="menu-title">Jenis kerusakan</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="{{ url('/Diagnosa') }}">
-              <span class="menu-icon">
-                <i class="mdi mdi-worker"></i>
-              </span>
-              <span class="menu-title">Diagnosa kerusakan</span>
             </a>
           </li>
           @elseif (auth()->user()->level == 'member')
@@ -132,9 +117,9 @@
             </a>
           </li>
           @endif
-          {{-- @if (auth()->mekanik()->status_aktivasi == 1)
+          @if (auth()->user()->status_aktivasi != '0')
 
-          @endif --}}
+          @endif
         </ul>
       </nav>
       <!-- partial -->

@@ -8,6 +8,8 @@ use App\Http\Controllers\JenisKerusakanController;
 use App\Http\Controllers\KerusakanController;
 use App\Http\Controllers\MekanikController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PerbaikanController;
+use App\Models\perbaikan;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -40,12 +42,22 @@ Route::get('/admin/add', [adminController::class, 'tambah']);
 Route::post('/admin/add', [adminController::class, 'add']);
 
 // member
-Route::get('/member', [MemberController::class, 'oi']);
-Route::get('/member/add', [MemberController::class, 'tambah']);
-Route::post('/member/add', [MemberController::class, 'add']);
-Route::get('/member/update/{id}', [MemberController::class, 'edit']);
-Route::post('/member/update/{id}', [MemberController::class, 'update']);
-Route::get('/member/delete/{id}', [MemberController::class, 'delete']);
+Route::middleware(['auth', 'ismember'])->group(function () {
+    Route::get('/member', [MemberController::class, 'oi']);
+    Route::get('/member/add', [MemberController::class, 'tambah']);
+    Route::post('/member/add', [MemberController::class, 'add']);
+    Route::get('/member/update/{id}', [MemberController::class, 'edit']);
+    Route::post('/member/update/{id}', [MemberController::class, 'update']);
+    Route::get('/member/delete/{id}', [MemberController::class, 'delete']);
+
+    // kerusakan
+    Route::get('/kerusakan', [KerusakanController::class, 'candak']);
+    Route::get('/kerusakan/add', [KerusakanController::class, 'oi']);
+    Route::post('kerusakan/add', [KerusakanController::class, 'add']);
+    Route::get('/kerusakan/update/{id}', [kerusakanController::class, 'edit']);
+    Route::post('/kerusakan/update/{id}', [kerusakanController::class, 'update']);
+    Route::get('/kerusakan/delete/{id}', [kerusakanController::class, 'delete']);
+});
 
 
 // mekanik
@@ -56,13 +68,7 @@ Route::get('/mekanik/{id}', [MekanikController::class, 'edit'])->middleware('isa
 // Route::post('/mekanik/update/{id}', [MekanikController::class, 'update'])->middleware('isadmin');
 Route::get('/mekanik/delete/{id}', [MekanikController::class, 'delete'])->middleware('isadmin');
 
-//kerusakan
-Route::get('/kerusakan', [KerusakanController::class, 'candak']);
-Route::get('/kerusakan/add', [KerusakanController::class, 'oi']);
-Route::post('kerusakan/add', [KerusakanController::class, 'add']);
-Route::get('/kerusakan/update/{id}', [kerusakanController::class, 'edit'])->middleware('isadmin');
-Route::post('/kerusakan/update/{id}', [kerusakanController::class, 'update'])->middleware('isadmin');
-Route::get('/kerusakan/delete/{id}', [kerusakanController::class, 'delete'])->middleware('isadmin');
+
 
 // jenis kerusakan
 Route::controller(JenisKerusakanController::class)->group(function(){
@@ -71,6 +77,7 @@ Route::controller(JenisKerusakanController::class)->group(function(){
     Route::post('/jeniskerusakan/add', 'add');
     Route::get('/jeniskerusakan/update/{id}', 'edit');
     Route::post('/jeniskerusakan/update/{id}', 'update');
+    Route::get('/jeniskerusakan/delete/{id}', 'delete');
  });
 
  Route::controller(DiagnosaKerusakanController::class)->group(function(){
@@ -78,3 +85,9 @@ Route::controller(JenisKerusakanController::class)->group(function(){
     Route::get('/Diagnosa/add', 'tambah');
     Route::post('/Diagnosa/add', 'add');
  });
+
+//  perbaikan
+Route::controller(PerbaikanController::class)->group(function(){
+    Route::get('/perbaikan', 'index');
+    Route::get('/perbaikan/add', 'tambah');
+});

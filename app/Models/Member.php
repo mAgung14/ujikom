@@ -22,11 +22,11 @@ class Member extends Model
     ];
 
    public function user(){
-         return $this->belongsTo(User::class, 'id');
+         return $this->hasMany(User::class, 'id','id_users');
      }
 
      public function mekanik(){
-         return $this->belongsTo(Mekanik::class, 'id');
+         return $this->belongsTo(Mekanik::class, 'id_mekanik','id');
      }
      public function kerusakan(){
          return $this->hasMany(kerusakan::class, 'id');

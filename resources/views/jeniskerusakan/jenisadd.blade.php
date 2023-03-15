@@ -39,7 +39,7 @@
                             <div class="col-lg-5">
                                 <div class="form-group">
                                     <label>Jenis Kerusakan</label>
-                                    <input type="text" class="form-control" name="jeniskerusakan" value="{{ $jenisKerusakan }}">
+                                    <input type="text" class="form-control" name="jeniskerusakan" value="{{ $jeniskerusakan }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Deskripsi</label>

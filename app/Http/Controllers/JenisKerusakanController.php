@@ -24,7 +24,7 @@ class JenisKerusakanController extends Controller
 
     function add(Request $req){
         $data = [
-            'jeniskerusakan' => $req->jeniskerusakan,
+            'jenisKerusakan' => $req->jenisKerusakan,
             'deskripsi' => $req->deskripsi
         ];
         jeniskerusakan::create($data);
@@ -50,5 +50,17 @@ class JenisKerusakanController extends Controller
 
         jeniskerusakan::where('id',$req->id)->update($data);
         return redirect('/jeniskerusakan');
+    }
+    function delete(Request $req){
+        $delete = jeniskerusakan::where('id', $req->id)->delete();
+        if ($delete) {
+            return redirect('/kerusakan')->with('pesan','<div class="alert alert-secondary" role="alert">
+            kerusakan Berhasil Di hapus
+          </div>');
+        }else{
+            return redirect('/kerusakan')->with('pesan','<div class="alert alert-secondary" role="alert">
+            kerusakan Tidak bisa di hapus
+          </div>');
+        }
     }
 }
