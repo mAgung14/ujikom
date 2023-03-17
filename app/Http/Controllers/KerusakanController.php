@@ -68,10 +68,10 @@ class KerusakanController extends Controller
             'member_id' => $req->member_id,
         ];
         if ($req->hasfile('foto_kendaraan')) {
-            $edit['foto_kendaraan'] = $req->file('foto_kendaraan')->store('foto_kendaraan');
+            $edit['foto_kendaraan'] = $req->file('foto_kendaraan')->store('img');
         }
         kerusakan::where('id',$req->id)->update($data);
-        return redirect('/jeniskerusakan');
+        return redirect('/kerusakan');
     }
 
     function delete(Request $req){

@@ -9,6 +9,7 @@ use App\Http\Controllers\KerusakanController;
 use App\Http\Controllers\MekanikController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PerbaikanController;
+use App\Models\detailperbaikan;
 use App\Models\perbaikan;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -62,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
 
 // mekanik
 Route::get('/mekanik', [MekanikController::class, 'ambil'])->middleware('isadmin');
-Route::get('/mekanik/add', [MekanikController::class, 'tambah'])->middleware('isadmin');
+Route::get('/mekanik/add', [MekanikController::class, 'tambah']);
 Route::post('/mekanik/add', [MekanikController::class, 'add']);
 Route::get('/mekanik/{id}', [MekanikController::class, 'edit'])->middleware('isadmin');
 // Route::post('/mekanik/update/{id}', [MekanikController::class, 'update'])->middleware('isadmin');
@@ -97,3 +98,10 @@ Route::controller(JenisKerusakanController::class)->group(function(){
     Route::get('/perbaikan/delete/{id}', 'delete');
 });
 // });
+
+// detail perbaikan
+Route::controller(detailperbaikan::class)->group(function(){
+    Route::get('/detail', 'index');
+    Route::get('/detail/perbaikan', 'tambah');
+    Route::post('/detail/perbaikan','add');
+});

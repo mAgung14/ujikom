@@ -118,16 +118,16 @@
             </a>
           </li>
           @endif
-            @if (auth()->user()->level != 'admin' && auth()->user()->member->mekanik != null && auth()->user()->member->mekanik->status_aktivasi == 1)
-            <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('/perbaikan') }}">
-                <span class="menu-icon">
-                    <i class="mdi mdi-worker"></i>
-                </span>
-                <span class="menu-title">Perbaikan</span>
-                </a>
-            </li>
-            @endif
+          @if (auth()->user()->level != 'admin' && auth()->user()->member->mekanik != null && auth()->user()->member->mekanik->status_aktivasi == 0)
+          <li class="nav-item menu-items">
+              <a class="nav-link" href="{{ url('/perbaikan') }}">
+              <span class="menu-icon">
+                  <i class="mdi mdi-worker"></i>
+              </span>
+              <span class="menu-title">Perbaikan</span>
+              </a>
+          </li>
+          @endif
         </ul>
       </nav>
       <!-- partial -->
