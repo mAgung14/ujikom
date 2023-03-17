@@ -18,6 +18,10 @@ class Mekanik extends Model
     ];
 
     public function member(){
-        return $this->hasMany(Member::class, 'id','member_id');
+        return $this->belongsTo(Member::class, 'member_id');
+    }
+
+    public function perbaikan(){
+        return $this->belongsTo(perbaikan::class, 'id');
     }
 }

@@ -95,10 +95,11 @@
                                     <span class="btn btn-danger">Not Aktive</span>
                                     @endif
                                 </td>
-                                <td>{{ $item->member_id }}</td>
-                                @foreach ($permintaan as $item)
-                                <td><a href="/mekanik/{{ $item['id'] }}" class="btn btn-primary">Aktivasi</a></td>
+                                <td>{{ $item->member->name }}</td>
+                                @foreach ($permintaan as $per)
+                                <td><a href="/mekanik/{{ $per['id'] }}" class="btn btn-primary">Aktivasi</a></td>
                                 @endforeach
+                                <td><a href="{{ url('/mekanik/delete').'/'.$item->id }}" class="btn btn-danger"></a>Hapus</td>
                             </tr>
                             @endforeach
             </tbody>

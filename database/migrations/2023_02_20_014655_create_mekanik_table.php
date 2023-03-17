@@ -18,7 +18,7 @@ class CreateMekanikTable extends Migration
             $table->string('name');
             $table->text('alamat');
             $table->enum('status_aktivasi',['1','0']);
-            $table->foreignId('member_id')->references('id')->on('member');
+            $table->foreignId('member_id')->constrained('member')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

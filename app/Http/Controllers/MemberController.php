@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -75,22 +76,24 @@ class MemberController extends Controller
         return view('member.memberedit',$data,$user);
     }
     function update(Request $req){
+        // dd($req);
         $data = [
             'name'=>$req->name,
             'no_hp'=>$req->no_hp,
             'email'=>$req->email,
             'nik'=>$req->nik,
-            'ktp'=>$req->ktp,
             'alamat'=>$req->alamat,
             'users_id'=>$req->users_id,
+            'foto' =>  $req->file('foto')->store('img'),
+            'ktp' =>  $req->file('ktp')->store('img'),
         ];
+        // if ($req->file('foto')) {
+        //     $data['foto'] = $req->file('foto')->store('img');
+        // }
 
-            if ($req->hasfile('foto')) {
-                $data['foto'] = $req->file('foto')->store('img');
-            }
-            if ($req->hasfile('ktp')) {
-                $data['ktp'] = $req->file('ktp')->store('img');
-            }
+        // if ($req->file('ktp')) {
+        //     $data['ktp'] = $req->file('ktp')->store('img');
+        // }
 
         Member::where('id',$req->id)->update($data);
         return redirect('/member');
@@ -98,8 +101,9 @@ class MemberController extends Controller
 
     function delete(Request $req){
         $delete = Member::where('id', $req->id)->delete();
+        User::where('id', $req->users_id)->delete();
         if ($delete) {
-            return redirect('/member')->with('pesan','<div class="alert alert-secondary" role="alert">
+            return redirect('/')->with('pesan','<div class="alert alert-secondary" role="alert">
             member Berhasil Di hapus
           </div>');
         }else{

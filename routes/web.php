@@ -42,13 +42,13 @@ Route::get('/admin/add', [adminController::class, 'tambah']);
 Route::post('/admin/add', [adminController::class, 'add']);
 
 // member
-Route::middleware(['auth', 'ismember'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/member', [MemberController::class, 'oi']);
     Route::get('/member/add', [MemberController::class, 'tambah']);
     Route::post('/member/add', [MemberController::class, 'add']);
     Route::get('/member/update/{id}', [MemberController::class, 'edit']);
     Route::post('/member/update/{id}', [MemberController::class, 'update']);
-    Route::get('/member/delete/{id}', [MemberController::class, 'delete']);
+    Route::get('/member/delete/{id}/{users_id}', [MemberController::class, 'delete']);
 
     // kerusakan
     Route::get('/kerusakan', [KerusakanController::class, 'candak']);
@@ -62,7 +62,7 @@ Route::middleware(['auth', 'ismember'])->group(function () {
 
 // mekanik
 Route::get('/mekanik', [MekanikController::class, 'ambil'])->middleware('isadmin');
-Route::get('/mekanik/add', [MekanikController::class, 'tambah']);
+Route::get('/mekanik/add', [MekanikController::class, 'tambah'])->middleware('isadmin');
 Route::post('/mekanik/add', [MekanikController::class, 'add']);
 Route::get('/mekanik/{id}', [MekanikController::class, 'edit'])->middleware('isadmin');
 // Route::post('/mekanik/update/{id}', [MekanikController::class, 'update'])->middleware('isadmin');
@@ -87,7 +87,13 @@ Route::controller(JenisKerusakanController::class)->group(function(){
  });
 
 //  perbaikan
-Route::controller(PerbaikanController::class)->group(function(){
+// Route::group(['middleware'=>'ismekanik'], function(){
+    Route::controller(PerbaikanController::class)->group(function(){
     Route::get('/perbaikan', 'index');
     Route::get('/perbaikan/add', 'tambah');
+    Route::post('/perbaikan/add', 'add');
+    Route::get('/perbaikan/update/{id}', 'edit');
+    Route::post('/perbaikan/update/{id}', 'update');
+    Route::get('/perbaikan/delete/{id}', 'delete');
 });
+// });

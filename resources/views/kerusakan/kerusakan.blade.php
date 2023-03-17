@@ -6,7 +6,7 @@
 <div class="col-lg-12 grid-margin stretch-card mt-5">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Mekanik table</h4>
+        <h4 class="card-title">Kerusakan     table</h4>
         <p class="card-description"><a href="{{ url('/kerusakan/add') }}" class="btn btn-primary">Tambah data</a></p>
         <div class="table-responsive">
           <table class="table table-bordered">
@@ -16,7 +16,7 @@
                 <th>Jenis</th>
                 <th>Tipe</th>
                 <th>Tahun</th>
-                <th>foto</th>
+                <th>Foto Kendaraan</th>
                 <th>Member</th>
                 <th>Aksi</th>
               </tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,12 @@ class adminController extends Controller
             'level'=>'member',
             'email'=>$req->email
         ];
-        User::create($data);
+        $user = User::create($data);
+        Member::create([
+            'name'=>$user->username,
+            'email'=>$user->email,
+            'users_id'=>$user->id
+        ]);
         return redirect('/login');
     }
 }

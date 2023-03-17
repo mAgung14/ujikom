@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\jeniskerusakan;
 use Illuminate\Http\Request;
 
-class JenisKerusakanController extends Controller
+class   JenisKerusakanController extends Controller
 {
     function index(){
         $jenis_kerusakan['jenis_kerusakan'] = jeniskerusakan::get();
@@ -14,7 +14,7 @@ class JenisKerusakanController extends Controller
 
     function tambah(){
         $data = [
-            'jeniskerusakan' => '',
+            'jenisKerusakan' => '',
             'deskripsi' => '',
             'action' => url('/jeniskerusakan/add'),
             'tombol' => 'Simpan'

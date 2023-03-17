@@ -1,50 +1,59 @@
-@extends('sidebar')
-@section('content')
-<div class="col-6 grid-margin stretch-card" style="margin-top:50px;">
-    <div class="card">
-      <div class="card-body">
-        <form method="post" class="forms-sample">
-          <div class="form-group">
-            <label for="exampleInputName1">Name</label>
-            <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail3">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword4">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <label for="exampleSelectGender">Gender</label>
-            <select class="form-control" id="exampleSelectGender">
-              <option>Male</option>
-              <option>Female</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>File upload</label>
-            <input type="file" name="img[]" class="file-upload-default">
-            <div class="input-group col-xs-12">
-              <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-              <span class="input-group-append">
-                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-              </span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputCity1">City</label>
-            <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-          </div>
-          <div class="form-group">
-            <label for="exampleTextarea1">Textarea</label>
-            <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary me-2">Submit</button>
-          <button class="btn btn-dark">Cancel</button>
-        </form>
-      </div>
-    </div>
-  </div>
-@endsection
+
+    @extends('sidebar')
+    @section('content')
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                    <div class="col-6 grid-margin stretch-card" style="margin-top:50px;">
+                        <div class="card">
+                        <div class="card-body">
+                            <form action="{{ url('/perbaikan/add') }}" method="post" class="forms-sample">
+                                @csrf
+                            <div class="form-group">
+                                <label for="exampleInputName1">Tanggal perbaikan</label>
+                                <input type="date" name="tanggal" class="form-control" id="exampleInputName1" placeholder="tanggal">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Status Perbaikan</label>
+                                <select name="status_perbaikan" id="" class="form-control">
+                                    <option value="pencarian" class="form-control">Pencarian</option>
+                                    <option value="proses" class="form-control">Proses</option>
+                                    <option value="selesai" class="form-control">Selesai</option>
+                                </select>
+                            </div>
+                            @if (auth()->user()->level == 'admin')
+                            <div class="form-group">
+                                <label for="exampleInputName1">Status Pembayar</label>
+                                <select name="status_pembayaran" id="" class="form-control">
+                                    <option value="" class="form-control">-- Pilih --</option>
+                                    <option value="sudahbayar" class="form-control">Sudah Bayar</option>
+                                    <option value="belumbayar" class="form-control">Belum Bayar</option>
+                                    </select>
+                                </div>
+                                @endif
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Mekanik</label>
+                                <select class="form-control" name="id_mekanik" id="exampleSelectGender">
+                                    @foreach ($mekanik as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Kerusakan</label>
+                                <select class="form-control" name="id_kerusakan" id="exampleSelectGender">
+                                    @foreach ($kerusakan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->jnskendaraan }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <button class="btn btn-dark"><a href="/perbaikan">Cancel</a></button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+    @endsection
+
+{{-- @endsection --}}

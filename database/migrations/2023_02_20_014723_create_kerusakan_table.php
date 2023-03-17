@@ -19,7 +19,7 @@ class CreateKerusakanTable extends Migration
             $table->string('tipe_kendaraan');
             $table->string('tahunkendaraan');
             $table->string('foto_kendaraan');
-            $table->foreignId('id_member')->references('id')->on('member');
+            $table->foreignId('member_id')->constrained('member')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

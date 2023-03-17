@@ -22,7 +22,7 @@ class CreateMemberTable extends Migration
             $table->string('foto');
             $table->text('ktp');
             $table->text('alamat');
-            $table->foreignId('users_id')->references('id')->on('users');
+            $table->foreignId('users_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

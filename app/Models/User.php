@@ -44,6 +44,9 @@ class User extends Authenticatable
     ];
 
     public function member(){
-        return $this->hasMany(Member::class, 'id','users_id');
+        return $this->belongsTo(Member::class, 'id','users_id');
+    }
+    public function mekanik(){
+        return $this->belongsTo(Mekanik::class, 'id_mekanik','id');
     }
 }

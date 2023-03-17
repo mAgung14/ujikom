@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ismekanik
 {
@@ -16,6 +17,11 @@ class ismekanik
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (Auth::check()) {
+            if (Auth::mekanik()->status_aktivasi == '1') {
+                return $next($request);
+            }
+        }
+
     }
 }

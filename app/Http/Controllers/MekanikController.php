@@ -47,4 +47,17 @@ class MekanikController extends Controller
         return redirect('/mekanik');
     }
 
+    function delete(Request $req){
+        $delete = Mekanik::where('id', $req->id)->delete();
+        if ($delete) {
+            return redirect('/')->with('pesan','<div class="alert alert-secondary" role="alert">
+            Mekanik Berhasil Di hapus
+          </div>');
+        }else{
+            return redirect('')->with('pesan','<div class="alert alert-secondary" role="alert">
+            Mekanik Tidak bisa di hapus
+          </div>');
+        }
+    }
+
 }
